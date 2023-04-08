@@ -106,5 +106,66 @@ namespace Practice.Models
         {
             return $"Имя: {_name}, Фамилия: {_lastName}";
         }
+
+        /// <summary>
+        /// Сравнение оьъектов
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object? obj)
+        {
+            if (Object.ReferenceEquals(this, obj))
+                return true;
+
+            if (this.GetType() != obj.GetType())
+                return false;
+
+            var person = obj as Person;
+            return person != null && this.Name == person.Name && LastName == person.LastName && DateOfBirth == person.DateOfBirth;
+        }
+
+
+        /// <summary>
+        /// Проверка на равенство
+        /// </summary>
+        /// <param name="person1"></param>
+        /// <param name="person2"></param>
+        /// <returns></returns>
+        public static bool operator == (Person person1, Person person2)
+        {
+            if(person1 is null)
+            {
+                if(person2 is null)
+                {
+                    return true;
+                }
+                return false;
+            }
+
+            return person1.Equals(person2);
+        }
+
+        /// <summary>
+        /// Проверка на неравенство
+        /// </summary>
+        /// <param name="person1"></param>
+        /// <param name="person2"></param>
+        /// <returns></returns>
+        public static bool operator != (Person person1, Person person2)
+        {
+            return !(person1 == person2);
+        }
+
+
+        /// <summary>
+        /// Получение хэш кода
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return (Name, LastName, DateOfBirth).GetHashCode();
+        }
+
+
     }
 }
