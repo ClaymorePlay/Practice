@@ -17,5 +17,10 @@ namespace Practice.Models.Consts
         /// Фамилия по умолчанию
         /// </summary>
         public const string DefaultLastName = "DefaultLastName";
+
+        /// <summary>
+        /// Имя предмета по умолчанию
+        /// </summary>
+        public const string TestSubjectName = "SubjectLocal";
     }
 }

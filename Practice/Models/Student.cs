@@ -69,7 +69,7 @@ namespace Practice.Models
         /// <summary>
         /// Средняя оценка
         /// </summary>
-        public double AvgGrade { get => _exams.Average(c => c.Grade); }
+        public double AvgGrade { get => _exams == null ? 0 : _exams.Average(c => c.Grade); }
 
         /// <summary>
         /// Индексатор
@@ -120,8 +120,10 @@ namespace Practice.Models
         /// <returns></returns>
         public override string ToString()
         {
-            return $"{_personInfo.ToString()}\nОбразование: {_education}, Группа: {_groupNumber}\n" +
-                $"{string.Join(',', _exams.ToList())}";
+            var str = $"{_personInfo.ToString()}\nОбразование: {_education}, Группа: {_groupNumber}\n";
+            if (_exams != null && _exams.Count() > 0)
+                str += string.Join(",\n", _exams.Select(c => c.ToString()).ToList());
+            return str;
         }
 
         /// <summary>
