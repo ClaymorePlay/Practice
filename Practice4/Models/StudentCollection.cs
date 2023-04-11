@@ -1,4 +1,5 @@
 ﻿using Practice.Models;
+using Practice4.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,6 +15,24 @@ namespace Practice3.Models
         /// Студенты
         /// </summary>
         private List<Student> _students = new List<Student>();
+
+        /// <summary>
+        /// Название коллекции 
+        /// </summary>
+        public string CollectionName { get; set; } = "ListCollection";
+
+
+        public delegate void StudentListHandler(object sourse, StudentListHandlerEventArgs args);
+
+        /// <summary>
+        /// Событие вызываеморе при изменении размера коллекции
+        /// </summary>
+        public event StudentListHandler StudentsCountChanged;
+
+        /// <summary>
+        /// Вызываемое при изменении ссылки объекта
+        /// </summary>
+        public event StudentListHandler StudentReferenceChanged;
 
         /// <summary>
         /// Максимальная оценка
@@ -60,6 +79,16 @@ namespace Practice3.Models
         public void AddStudents(params Student[] students)
         {
             _students.AddRange(students);
+            if(StudentsCountChanged != null)
+                foreach(var item in students)
+                {
+                    StudentsCountChanged.Invoke(null, new StudentListHandlerEventArgs
+                    {
+                        Name = CollectionName,
+                        Student = item,
+                        OperationName = "Add"
+                    });
+                }
         }
 
         /// <summary>
@@ -76,6 +105,12 @@ namespace Practice3.Models
                     stud.Exams.Add(new Exam());
                 }
                 _students.Add(stud);
+                StudentsCountChanged.Invoke(null, new StudentListHandlerEventArgs
+                {
+                    Name = CollectionName,
+                    Student = stud,
+                    OperationName = "Add"
+                });
             }
         }
 
@@ -128,5 +163,57 @@ namespace Practice3.Models
         {
             return _students.GetEnumerator();
         }
+
+
+        /// <summary>
+        /// Метод удаления элемента
+        /// </summary>
+        /// <param name="j"></param>
+        /// <returns></returns>
+        public bool Remove(int j)
+        {
+            try
+            {
+                var stud = _students[j];
+                _students.RemoveAt(j);
+
+                if(StudentsCountChanged != null)
+                    StudentsCountChanged.Invoke(null, new StudentListHandlerEventArgs
+                    {
+                        Name = CollectionName,
+                        Student = stud,
+                        OperationName = "Remove"
+                    });
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+
+        }
+
+        /// <summary>
+        /// индексатор
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public Student this[int index]
+        {
+            get => _students[index];
+            set
+            {
+                _students[index] = value;
+                StudentReferenceChanged.Invoke(null, new StudentListHandlerEventArgs
+                {
+                    Student = value,
+                    Name = CollectionName,
+                    OperationName = "Update"
+                });
+            }
+        }
+
+
+
     }
 }
