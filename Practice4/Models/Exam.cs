@@ -9,6 +9,9 @@ using System.Xml.Linq;
 
 namespace Practice.Models
 {
+    /// <summary>
+    /// Экзамен
+    /// </summary>
     public class Exam : IDateAndCopy
     {
         /// <summary>

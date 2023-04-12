@@ -19,6 +19,10 @@ namespace Practice2.Models
         /// Сдан ли
         /// </summary>
         public bool IsPassed { get; set; }
+
+        /// <summary>
+        /// Дата сдачи
+        /// </summary>
         public DateTime Date { get; set; }
 
         public Test(string name, bool isPassed)
@@ -33,11 +37,19 @@ namespace Practice2.Models
             IsPassed = false;
         }
 
+        /// <summary>
+        /// Преобразование объекта к строке
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return $"Имя: {Name}, Зачет: {IsPassed}";
         }
 
+        /// <summary>
+        /// Полное копирование
+        /// </summary>
+        /// <returns></returns>
         public object DeepCopy()
         {
             return new Test(Name, IsPassed);

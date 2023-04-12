@@ -5,6 +5,9 @@ using System.Collections;
 
 namespace Practice.Models
 {
+    /// <summary>
+    /// Класс студента
+    /// </summary>
     public class Student : Person, IDateAndCopy
     {
 
@@ -77,6 +80,9 @@ namespace Practice.Models
         /// </summary>
         public double AvgGrade { get => _exams == null ? 0 : _exams.ToArray().Average(c => ((Exam)c).Grade); }
 
+        /// <summary>
+        /// Дата
+        /// </summary>
         public DateTime Date { get; set; }
 
         /// <summary>

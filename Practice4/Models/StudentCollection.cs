@@ -21,7 +21,11 @@ namespace Practice3.Models
         /// </summary>
         public string CollectionName { get; set; } = "ListCollection";
 
-
+        /// <summary>
+        /// Делегат
+        /// </summary>
+        /// <param name="sourse"></param>
+        /// <param name="args"></param>
         public delegate void StudentListHandler(object sourse, StudentListHandlerEventArgs args);
 
         /// <summary>
@@ -154,11 +158,19 @@ namespace Practice3.Models
             _students.Sort(new StudentComparer());
         }
 
+        /// <summary>
+        /// Получение перечисления
+        /// </summary>
+        /// <returns></returns>
         public IEnumerator<Student> GetEnumerator()
         {
             return _students.GetEnumerator();
         }
 
+        /// <summary>
+        /// Получение перечисления
+        /// </summary>
+        /// <returns></returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
             return _students.GetEnumerator();

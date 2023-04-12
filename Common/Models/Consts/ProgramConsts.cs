@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Practice.Models.Consts
 {
+    /// <summary>
+    /// Программные константы
+    /// </summary>
     public class ProgramConsts
     {
         /// <summary>

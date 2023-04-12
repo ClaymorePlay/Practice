@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Practice3.Models
 {
+    /// <summary>
+    /// Коллекция студентов
+    /// </summary>
     public class StudentCollection : IEnumerable<Student>
     {
         /// <summary>
@@ -79,7 +82,10 @@ namespace Practice3.Models
             }
         }
 
-
+        /// <summary>
+        /// Получение строки объекта
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return String.Join("", _students.Select(c => c.ToString()));
@@ -119,11 +125,19 @@ namespace Practice3.Models
             _students.Sort(new StudentComparer());
         }
 
+        /// <summary>
+        /// Полученре перечисления
+        /// </summary>
+        /// <returns></returns>
         public IEnumerator<Student> GetEnumerator()
         {
             return _students.GetEnumerator();
         }
 
+        /// <summary>
+        /// Получение перечисления
+        /// </summary>
+        /// <returns></returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
             return _students.GetEnumerator();

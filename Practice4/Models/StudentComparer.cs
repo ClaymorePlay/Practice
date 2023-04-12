@@ -10,7 +10,13 @@ namespace Practice3.Models
 {
     public class StudentComparer : IComparer<Student>
     {
-
+        /// <summary>
+        /// Сравнение объектов
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public int Compare(Student? x, Student? y)
         {
             if (x is null || y is null)

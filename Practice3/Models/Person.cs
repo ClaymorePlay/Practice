@@ -25,11 +25,6 @@ namespace Practice.Models
         protected string _lastName;
 
         /// <summary>
-        /// Дата рождения
-        /// </summary>
-        protected DateTime _dateOfBirth;
-
-        /// <summary>
         /// Имя
         /// </summary>
         public string Name
@@ -52,8 +47,8 @@ namespace Practice.Models
         /// </summary>
         public DateTime DateOfBirth
         {
-            get => _dateOfBirth;
-            set => _dateOfBirth = value;
+            get => Date;
+            set => Date = value;
         }
 
         /// <summary>
@@ -63,11 +58,11 @@ namespace Practice.Models
         {
             get
             {
-                return _dateOfBirth.Year;
+                return Date.Year;
             }
             set
             {
-                _dateOfBirth = _dateOfBirth.AddYears(-_dateOfBirth.Year).AddYears(value);
+                Date = Date.AddYears(-Date.Year).AddYears(value);
             }
         }
 
@@ -80,7 +75,7 @@ namespace Practice.Models
         {
             _name = ProgramConsts.DefaultName;
             _lastName = StringExtension.GetRandom(10);
-            _dateOfBirth = DateTime.Now.AddYears(-(new Random().Next(1, 20)));
+            Date = DateTime.Now.AddYears(-(new Random().Next(1, 20)));
         }
 
         /// <summary>
@@ -90,7 +85,7 @@ namespace Practice.Models
         {
             _name = name;
             _lastName = lastName;
-            _dateOfBirth = datetime;
+            Date = datetime;
         }
 
         /// <summary>
@@ -99,7 +94,7 @@ namespace Practice.Models
         /// <returns></returns>
         public override string ToString()
         {
-            return $"Имя: {_name}, Фамилия: {_lastName}, Дата рождения {_dateOfBirth}";
+            return $"Имя: {_name}, Фамилия: {_lastName}, Дата рождения {Date}";
         }
 
         /// <summary>

@@ -9,7 +9,10 @@ namespace Practice.Extensions
 {
     public static class StringExtension
     {
-        private static Random random = new Random();
+        /// <summary>
+        /// Генератор случайных чисел
+        /// </summary>
+        private static Random random = new Random(DateTime.Now.Millisecond);
 
         /// <summary>
         /// Получение рандомной строки

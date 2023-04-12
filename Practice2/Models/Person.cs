@@ -23,10 +23,6 @@ namespace Practice.Models
         /// </summary>
         protected string _lastName;
 
-        /// <summary>
-        /// Дата рождения
-        /// </summary>
-        protected DateTime _dateOfBirth;
 
         /// <summary>
         /// Имя
@@ -46,14 +42,6 @@ namespace Practice.Models
             set => _lastName = value;
         }
 
-        /// <summary>
-        /// Дата рождения
-        /// </summary>
-        public DateTime DateOfBirth
-        {
-            get => _dateOfBirth;
-            set => _dateOfBirth = value;
-        }
 
         /// <summary>
         /// Год рождения
@@ -62,14 +50,17 @@ namespace Practice.Models
         {
             get
             {
-                return _dateOfBirth.Year;
+                return Date.Year;
             }
             set
             {
-                _dateOfBirth = _dateOfBirth.AddYears(-_dateOfBirth.Year).AddYears(value);
+                Date = Date.AddYears(-Date.Year).AddYears(value);
             }
         }
 
+        /// <summary>
+        /// Дата рождения
+        /// </summary>
         public DateTime Date { get; set; }
 
         /// <summary>
@@ -79,7 +70,7 @@ namespace Practice.Models
         {
             _name = ProgramConsts.DefaultName;
             _lastName = ProgramConsts.DefaultLastName;
-            _dateOfBirth = DateTime.Now.AddYears(-20);
+            Date = DateTime.Now.AddYears(-20);
         }
 
         /// <summary>
@@ -89,7 +80,7 @@ namespace Practice.Models
         {
             _name = name;
             _lastName = lastName;
-            _dateOfBirth = datetime;
+            Date = datetime;
         }
 
         /// <summary>
@@ -98,7 +89,7 @@ namespace Practice.Models
         /// <returns></returns>
         public override string ToString()
         {
-            return $"Имя: {_name}, Фамилия: {_lastName}, Дата рождения {_dateOfBirth}";
+            return $"Имя: {_name}, Фамилия: {_lastName}, Дата рождения {Date}";
         }
 
         /// <summary>
@@ -124,7 +115,7 @@ namespace Practice.Models
                 return false;
 
             var person = (Person?)obj;
-            return this.Name == person.Name && LastName == person.LastName && DateOfBirth == person.DateOfBirth;
+            return this.Name == person.Name && LastName == person.LastName && Date == person.Date;
         }
 
 
@@ -166,7 +157,7 @@ namespace Practice.Models
         /// <returns></returns>
         public override int GetHashCode()
         {
-            return (Name, LastName, DateOfBirth).GetHashCode();
+            return (Name, LastName, Date).GetHashCode();
         }
 
         /// <summary>
@@ -175,7 +166,7 @@ namespace Practice.Models
         /// <returns></returns>
         public virtual object DeepCopy()
         {
-            return new Person(this.Name, this.LastName, this.DateOfBirth);
+            return new Person(this.Name, this.LastName, this.Date);
         }
     }
 }

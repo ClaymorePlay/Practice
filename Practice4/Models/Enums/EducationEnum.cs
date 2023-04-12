@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Practice.Models.Enums
 {
+    /// <summary>
+    /// Виды образзования
+    /// </summary>
     public enum EducationEnum
     {
         /// <summary>

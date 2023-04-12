@@ -77,6 +77,9 @@ namespace Practice.Models
         /// </summary>
         public double AvgGrade { get => _exams == null ? 0 : _exams.ToArray().Average(c => ((Exam)c).Grade); }
 
+        /// <summary>
+        /// Дата рождения
+        /// </summary>
         public DateTime Date { get; set; }
 
         /// <summary>

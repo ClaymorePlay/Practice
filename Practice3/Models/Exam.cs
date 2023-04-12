@@ -9,6 +9,9 @@ using System.Xml.Linq;
 
 namespace Practice.Models
 {
+    /// <summary>
+    /// Экзамен
+    /// </summary>
     public class Exam : IDateAndCopy
     {
         /// <summary>
@@ -22,12 +25,7 @@ namespace Practice.Models
         public int Grade { get; set; }
 
         /// <summary>
-        /// Начало экзамена
-        /// </summary>
-        public DateTime DateStart { get; set; }
-
-        /// <summary>
-        /// Дата
+        /// Дата экзамена
         /// </summary>
         public DateTime Date { get; set; }
 
@@ -35,7 +33,7 @@ namespace Practice.Models
         {
             Subject = StringExtension.GetRandom(7);
             Grade = new Random().Next(1, 6);
-            DateStart = DateTime.UtcNow;
+            Date = DateTime.UtcNow;
         }
 
 
@@ -43,7 +41,7 @@ namespace Practice.Models
         {
             Subject = subject;
             Grade = grade;
-            DateStart = date;
+            Date = date;
         }
 
         /// <summary>
@@ -52,7 +50,7 @@ namespace Practice.Models
         /// <returns></returns>
         public override string ToString()
         {
-            return $"Предмет: {Subject}, Оценка: {Grade}, Дата начала: {DateStart}";
+            return $"Предмет: {Subject}, Оценка: {Grade}, Дата начала: {Date}";
         }
 
         /// <summary>
@@ -62,7 +60,7 @@ namespace Practice.Models
         /// <exception cref="NotImplementedException"></exception>
         public object DeepCopy()
         {
-            return new Exam(Subject, Grade, DateStart);
+            return new Exam(Subject, Grade, Date);
         }
     }
 }

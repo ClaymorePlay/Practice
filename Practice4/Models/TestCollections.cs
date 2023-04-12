@@ -7,18 +7,39 @@ using System.Threading.Tasks;
 
 namespace Practice3.Models
 {
+    /// <summary>
+    /// Тест коллекций
+    /// </summary>
     public class TestCollections
     {
+        /// <summary>
+        /// Список для теста
+        /// </summary>
         public List<Person> TestTKeys;
 
+        /// <summary>
+        /// Список для теста
+        /// </summary>
         public List<string> TestTString;
 
+        /// <summary>
+        /// Словарь для теста с ключом по человеку
+        /// </summary>
         public Dictionary<Person, Student> TestDictionaryTKey;
 
+        /// <summary>
+        /// Словарь для теста с ключом по строке объекта
+        /// </summary>
         public Dictionary<string, Student> TestDictionaryString;
 
+        /// <summary>
+        /// Тестовый студент
+        /// </summary>
         private static Student _setedStudent;
 
+        /// <summary>
+        /// Генератор случайных чисел
+        /// </summary>
         private static Random _random = new Random(DateTime.Now.Millisecond);
 
         public TestCollections(int count)
@@ -47,7 +68,11 @@ namespace Practice3.Models
             return _setedStudent;
         }
 
-
+        /// <summary>
+        /// Получение времени поиска элемента во всех коллекциях
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public string GetTimeForFindItem(int index)
         {
             var response = "";
@@ -85,7 +110,10 @@ namespace Practice3.Models
             return response;
         }
 
-
+        /// <summary>
+        /// Получение времени поиска не существующего элемента коллекции
+        /// </summary>
+        /// <returns></returns>
         public string GetTimeForNotFindItem()
         {
             var response = "";
