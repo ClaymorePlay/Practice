@@ -23,7 +23,7 @@ public class Program
         ArrayList tests = new ArrayList();
 
         //Заполнение списков
-        for(int i = 0; i < 10; i++)
+        for(int i = 0; i < 2; i++)
         {
             exams.Add(new Exam());
             tests.Add(new Test());
