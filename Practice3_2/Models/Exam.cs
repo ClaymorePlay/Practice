@@ -63,12 +63,24 @@ namespace Practice.Models
             return new Exam(Subject, Grade, Date);
         }
 
+        /// <summary>
+        /// Реализация метода compareto для сортировки по оценке
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public int CompareTo(Exam? other)
         {
             return Grade.CompareTo(other?.Grade);
 
         }
 
+        /// <summary>
+        /// Реализация метода compare для сортировки по названию предмета
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public int Compare(Exam? x, Exam? y)
         {
             if (x is null || y is null)

@@ -71,17 +71,31 @@ public class Program
         Console.WriteLine(test.GetTimeForFindItem(count));
     }
 
-
+    /// <summary>
+    /// Создание ключа
+    /// </summary>
+    /// <param name="student"></param>
+    /// <returns></returns>
     private static string GetRandomValue(Student student)
     {
         return $"{student.Name} {student.LastName}";
     }
 
+    /// <summary>
+    /// Получение клю-значение
+    /// </summary>
+    /// <param name="i"></param>
+    /// <returns></returns>
     private static KeyValuePair<Person, Student> GetRandomPerson(int i)
     {
         return new KeyValuePair<Person, Student>(new Person($"{i}", $":{i}", DateTime.Now), new Student());
     }
 
+    /// <summary>
+    /// Оформленный вывод информации на экран
+    /// </summary>
+    /// <param name="str"></param>
+    /// <param name="color"></param>
     private static void WriteInfo(string str, ConsoleColor color)
     {
         Console.ForegroundColor = color;

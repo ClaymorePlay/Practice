@@ -69,7 +69,7 @@ namespace Practice3.Models
         }
 
 
-        /// <summary>
+         /// <summary>
         /// Получение времени на поиск элемента в коллекциях
         /// </summary>
         /// <param name="index"></param>
@@ -78,76 +78,42 @@ namespace Practice3.Models
         {
             var response = "";
 
+            var item_1 = TestTKeys.ElementAtOrDefault(index) ?? new Person();
             var startTest1 = Environment.TickCount64;
-            var firstItem = TestTKeys[index];
+            var firstItem = TestTKeys.Contains(item_1);
             var endTest1 = Environment.TickCount64;
             response += "\nЭлемент типа List<Person> был найден за " + (endTest1 - startTest1) + "ms";
 
+            var item_2 = TestTString.ElementAtOrDefault(index) ?? "NotContainsItem";
             var startTest2 = Environment.TickCount64;
-            var firstItem2 = TestTString[index];
+            var firstItem2 = TestTString.Contains(item_2);
             var endTest2 = Environment.TickCount64;
-            response += "\nПервый элемент типа List<string> был найден за " + (endTest2 - startTest2) + "ms";
+            response += "\nЭлемент типа List<string> был найден за " + (endTest2 - startTest2) + "ms";
 
+            var testItem3 = TestDictionaryTKey.Keys.ElementAtOrDefault(index) ?? new Person();
             var startTest3 = Environment.TickCount64;
-            var firstItem3 = TestDictionaryTKey.ElementAt(index);
+            var firstItem3 = TestDictionaryTKey.ContainsKey(testItem3);
             var endTest3 = Environment.TickCount64;
-            response += "\nПервый элемент типа Dictionary<Person, Student> был найден по ключу за " + (endTest3 - startTest3) + "ms";
+            response += "\nЭлемент типа Dictionary<Person, Student> был найден по ключу за " + (endTest3 - startTest3) + "ms";
 
+            var testItem4 = TestDictionaryString.Keys.ElementAtOrDefault(index) ?? "NotContainsItem";
             var startTest4 = Environment.TickCount64;
-            var firstItem4 = TestDictionaryString.ElementAt(index);
+            var firstItem4 = TestDictionaryString.ContainsKey(testItem4);
             var endTest4 = Environment.TickCount64;
-            response += "\nПервый элемент типа Dictionary<string, Student> был найден по клюу за " + (endTest4 - startTest4) + "ms";
+            response += "\nЭлемент типа Dictionary<string, Student> был найден по клюу за " + (endTest4 - startTest4) + "ms";
 
+            var testItem5 = TestDictionaryTKey.Values.ElementAtOrDefault(index) ?? new Student();
             var startTest5 = Environment.TickCount64;
-            var firstItem5 = TestDictionaryTKey.First(c => c.Value == TestDictionaryTKey.ElementAt(index).Value);
+            var firstItem5 = TestDictionaryTKey.ContainsValue(testItem5);
             var endTest5 = Environment.TickCount64;
-            response += "\nПервый элемент типа Dictionary<Person, Student> был найден по значению за " + (endTest5 - startTest5) + "ms";
+            response += "\nЭлемент типа Dictionary<Person, Student> был найден по значению за " + (endTest5 - startTest5) + "ms";
 
+            var testItem6 = TestDictionaryString.Values.ElementAtOrDefault(index) ?? new Student();
             var startTest6 = Environment.TickCount64;
-            var firstItem6 = TestDictionaryString.First(c => c.Value == TestDictionaryTKey.ElementAt(index).Value);
+            var firstItem6 = TestDictionaryString.ContainsValue(testItem6);
             var endTest6 = Environment.TickCount64;
-            response += "\nПервый элемент типа Dictionary<string, Student> был найден по значению за " + (endTest6 - startTest6) + "ms";
+            response += "\nЭлемент типа Dictionary<string, Student> был найден по значению за " + (endTest6 - startTest6) + "ms";
 
-            return response;
-        }
-
-        /// <summary>
-        /// Получение времени нахождения не содержащегося значения 
-        /// </summary>
-        /// <returns></returns>
-        public string GetTimeForNotFindItem()
-        {
-            var response = "";
-
-            var startTest1 = Environment.TickCount64;
-            var firstItem = TestTKeys.FirstOrDefault(c => c.Name == "-1");
-            var endTest1 = Environment.TickCount64;
-            response += "\nЭлемент типа List<Person> был найден за " + (endTest1 - startTest1) + "ms";
-
-            var startTest2 = Environment.TickCount64;
-            var firstItem2 = TestTString.FirstOrDefault(c => c == "-1");
-            var endTest2 = Environment.TickCount64;
-            response += "\nПервый элемент типа List<string> был найден за " + (endTest2 - startTest2) + "ms";
-
-            var startTest3 = Environment.TickCount64;
-            var firstItem3 = TestDictionaryTKey.FirstOrDefault(c => c.Key.Name == "-1");
-            var endTest3 = Environment.TickCount64;
-            response += "\nПервый элемент типа Dictionary<Person, Student> был найден по ключу за " + (endTest3 - startTest3) + "ms";
-
-            var startTest4 = Environment.TickCount64;
-            var firstItem4 = TestDictionaryString.FirstOrDefault(c => c.Key == "-1");
-            var endTest4 = Environment.TickCount64;
-            response += "\nПервый элемент типа Dictionary<string, Student> был найден по клюу за " + (endTest4 - startTest4) + "ms";
-
-            var startTest5 = Environment.TickCount64;
-            var firstItem5 = TestDictionaryTKey.First(c => c.Value.Name == "-1");
-            var endTest5 = Environment.TickCount64;
-            response += "\nПервый элемент типа Dictionary<Person, Student> был найден по значению за " + (endTest5 - startTest5) + "ms";
-
-            var startTest6 = Environment.TickCount64;
-            var firstItem6 = TestDictionaryString.First(c => c.Value.Name == "-1");
-            var endTest6 = Environment.TickCount64;
-            response += "\nПервый элемент типа Dictionary<string, Student> был найден по значению за " + (endTest6 - startTest6) + "ms";
 
             return response;
         }

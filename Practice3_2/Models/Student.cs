@@ -242,6 +242,9 @@ namespace Practice.Models
             _exams.Sort();
         }
 
+        /// <summary>
+        /// Собтировка по дате
+        /// </summary>
         public void SortByDate()
         {
             _exams.Sort(new ExamComparer());

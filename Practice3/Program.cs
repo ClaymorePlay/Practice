@@ -28,17 +28,17 @@ public class Program
 
         //Получение результатов
         Console.WriteLine();
-        Console.WriteLine("Максимальный средний балл: " + studentCollection.MaxGrade);
-        Console.WriteLine("Специалисты: \n" + String.Join("\n", studentCollection.StudentsWithSpecialist.Select(c => c.ToString())));
-        Console.WriteLine("Группировка по сред баллу: \n" + String.Join("\n", studentCollection.AverageMarkGroup(3).Select(c => c.ToString())));
+        Console.WriteLine("\nМаксимальный средний балл: " + studentCollection.MaxGrade);
+        Console.WriteLine("\nСпециалисты: \n" + String.Join("\n", studentCollection.StudentsWithSpecialist.Select(c => c.ToString())));
+        Console.WriteLine("\nГруппировка по сред баллу: \n" + String.Join("\n", studentCollection.AverageMarkGroup(3).Select(c => c.ToString())));
 
         //Тестирование коллекций элементов
         var count = 1000000;
         var test = new TestCollections(count);
-        Console.WriteLine("\n\n" + test.GetTimeForFindItem(count - 1));
-        Console.WriteLine("\n\n" + test.GetTimeForFindItem(0));
-        Console.WriteLine("\n\n" + test.GetTimeForFindItem(count / 2));
-        Console.WriteLine("\n\n" + test.GetTimeForNotFindItem());
+        Console.WriteLine("\n\nПоследний\n" + test.GetTimeForFindItem(count - 1));
+        Console.WriteLine("\n\nПервый\n" + test.GetTimeForFindItem(0));
+        Console.WriteLine("\n\nЦентральный\n" + test.GetTimeForFindItem(count / 2));
+        Console.WriteLine("\n\nНесуществующий\n" + test.GetTimeForFindItem(count));
     }
 }
 

@@ -14,8 +14,17 @@ namespace Practice3.Models
     /// </summary>
     public class StudentCollection<TKey> : IEnumerable<Student>
     {
+        /// <summary>
+        /// Делегат селектора ключа
+        /// </summary>
+        /// <typeparam name="TKey"></typeparam>
+        /// <param name="st"></param>
+        /// <returns></returns>
         public delegate TKey KeySelector<TKey>(Student st);
 
+        /// <summary>
+        /// Селектор
+        /// </summary>
         private readonly KeySelector<TKey> _keySelector;
 
         /// <summary>
@@ -45,12 +54,19 @@ namespace Practice3.Models
             } 
         }
 
+        /// <summary>
+        /// Получение студентов с определенным типом образования
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public List<Student> EducationForm(EducationEnum value)
         {
             return _students.Where(c => c.Value.Education == value).Select(c => c.Value).ToList();
         }
 
-
+        /// <summary>
+        /// Группировка по образованию
+        /// </summary>
         public IEnumerable<IGrouping<EducationEnum, KeyValuePair<TKey, Student>>> GetEducationGroup
         {
             get
