@@ -40,6 +40,11 @@ public class Program
         Console.WriteLine(journal1.ToString());
     }
 
+    /// <summary>
+    /// Создание ключа для студента
+    /// </summary>
+    /// <param name="student"></param>
+    /// <returns></returns>
     public static string KeySelect(Student student)
     {
         return $"{student.Name} {student.LastName}";

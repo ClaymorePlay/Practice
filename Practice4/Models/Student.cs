@@ -102,7 +102,7 @@ namespace Practice.Models
             {
                 this.Name = value.Name;
                 this.LastName = value.LastName;
-                this.DateOfBirth = value.DateOfBirth;
+                this.Date = value.Date;
                 
             }
         }
@@ -113,7 +113,7 @@ namespace Practice.Models
         /// <param name="personInfo"></param>
         /// <param name="education"></param>
         /// <param name="groupNumber"></param>
-        public Student(Person person, EducationEnum education, int groupNumber) : base(person.Name, person.LastName, person.DateOfBirth)
+        public Student(Person person, EducationEnum education, int groupNumber) : base(person.Name, person.LastName, person.Date)
         {
             _education = education;
             _groupNumber = groupNumber;

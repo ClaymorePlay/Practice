@@ -29,6 +29,9 @@ namespace Practice.Models
         /// </summary>
         private List<Test> _tests;
 
+        /// <summary>
+        /// Событие изменения свойства
+        /// </summary>
         public event PropertyChangedEventHandler? PropertyChanged;
 
 

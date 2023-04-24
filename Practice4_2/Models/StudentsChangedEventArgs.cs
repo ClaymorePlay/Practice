@@ -25,6 +25,9 @@ namespace Practice4_2.Models
         /// </summary>
         public string Property { get; set; }
 
+        /// <summary>
+        /// Ключ
+        /// </summary>
         public TKey Key { get; set; }
 
         public StudentsChangedEventArgs(string collectionName, ActionEnum action, string prop, TKey key)
